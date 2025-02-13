@@ -10,18 +10,32 @@
         body {
             background: radial-gradient(circle, #0b3d91, #000428);
             position: relative;
-            cursor: none; /* Removendo o cursor padrão */
-            overflow: hidden; /* Removendo qualquer barra de rolagem */
+            cursor: none;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow: hidden;
         }
 
-        /* Estilo do cursor personalizado */
         .custom-cursor {
             position: absolute;
-            font-size: 2rem; /* Ajuste o tamanho do emoji conforme necessário */
-            pointer-events: none; /* Impede que o cursor interaja com elementos */
+            font-size: 2rem;
+            pointer-events: none;
             transition: transform 0.1s ease-in-out;
+        }
+
+        .button-hover {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            padding: 15px;
         }
 
         .star {
@@ -45,7 +59,7 @@
             border-radius: 50%;
             opacity: 0;
             transform: translateX(-50%) translateY(-50%);
-            animation: shooting 2s linear;
+            animation: shooting 1s linear infinite;
         }
 
         @keyframes shooting {
@@ -58,73 +72,15 @@
                 transform: translateX(100vw) translateY(100vh);
             }
         }
-
-        .button-hover:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Estilos para tornar o layout mais responsivo */
-        .content {
-            width: 100%;
-            padding: 2rem; /* Reduzindo o padding para telas menores */
-            box-sizing: border-box;
-        }
-
-        nav ul {
-            padding-left: 0;
-            margin-top: 0;
-            margin-bottom: 0;
-            list-style-type: none;
-        }
-
-        nav ul li {
-            white-space: nowrap; /* Garante que o texto não quebre */
-            margin-bottom: 1.5rem; /* Ajustando o espaçamento entre os itens */
-        }
-
-        @media (max-width: 640px) {
-            /* Ajustando o tamanho do cursor no mobile */
-            .custom-cursor {
-                font-size: 1.5rem; /* Tamanho do emoji no mobile */
-            }
-
-            /* Ajustando a largura do container e removendo excessos */
-            .content {
-                padding: 1.5rem;
-            }
-
-            nav ul li {
-                margin-bottom: 1rem; /* Ajustando espaçamento entre os itens */
-            }
-        }
-
-        /* Garantindo que o layout se ajuste ao tamanho da tela */
-        @media (max-width: 320px) {
-            /* Ajustando o título e outros elementos */
-            h1 {
-                font-size: 1.5rem;
-            }
-
-            p {
-                font-size: 1rem;
-            }
-
-            nav ul li {
-                font-size: 0.9rem; /* Menor tamanho de fonte para telas muito pequenas */
-            }
-        }
     </style>
 </head>
-<body class="text-gray-900 flex flex-col items-center justify-between min-h-screen p-4">
+<body class="text-gray-900 flex flex-col items-center min-h-screen p-4">
     <script>
-        // Criando o cursor com o emoji de foguete
         const customCursor = document.createElement('div');
         customCursor.classList.add('custom-cursor');
-        customCursor.innerText = '🚀'; // Emoji de foguete
+        customCursor.innerText = '🚀';
         document.body.appendChild(customCursor);
 
-        // Movimentando o cursor personalizado com o movimento do mouse
         document.addEventListener('mousemove', (e) => {
             customCursor.style.left = e.pageX + 'px';
             customCursor.style.top = e.pageY + 'px';
@@ -148,27 +104,27 @@
             shootingStar.style.left = Math.random() * 100 + 'vw';
             shootingStar.style.top = Math.random() * 50 + 'vh';
             document.body.appendChild(shootingStar);
-            setTimeout(() => { shootingStar.remove(); }, 2000); // Remove após a animação
+            setTimeout(() => { shootingStar.remove(); }, 1000);
         }
 
         createStars();
-        setInterval(createShootingStar, 1000); // 1 estrela cadente por segundo
+        setInterval(createShootingStar, 1000);
     </script>
 
-    <div class="content w-full max-w-md p-6 bg-white rounded-2xl shadow-lg border border-gray-200 mb-12">
+    <div class="w-full max-w-md p-6 bg-white rounded-2xl shadow-lg border border-gray-200">
         <header class="text-center mb-8">
             <h1 class="text-3xl font-extrabold text-blue-600">🚀💻 ESPAÇO PC</h1>
             <p class="text-lg text-gray-600">Seu PC, sua solução! Escolha o serviço que você precisa e entre em contato.</p>
         </header>
         <nav aria-label="Lista de serviços">
-            <ul class="space-y-8">
-                <li><a href="#manutencao" class="button-hover p-4 bg-blue-500 text-white rounded-xl transition-transform" aria-label="Solicitar manutenção para o seu PC">💻 Manutenção e Reparo de PC</a></li>
-                <li><a href="#instalacao-app" class="button-hover p-4 bg-green-500 text-white rounded-xl transition-transform" aria-label="Instalar aplicativos no seu PC">📦 Instalação de Aplicativos</a></li>
-                <li><a href="#orcamento-pc" class="button-hover p-4 bg-yellow-500 text-white rounded-xl transition-transform" aria-label="Solicitar orçamento para PC de escritório">🖥️ Orçamento para PC de Escritório</a></li>
-                <li><a href="#orcamento-gamer" class="button-hover p-4 bg-red-500 text-white rounded-xl transition-transform" aria-label="Solicitar orçamento para PC gamer">🎮 Orçamento para PC Gamer</a></li>
-                <li><a href="#efetuar-pagamento" class="button-hover p-4 bg-orange-500 text-white rounded-xl transition-transform" aria-label="Efetuar pagamento pelos serviços">💳 Efetuar Pagamento</a></li>
-                <li><a href="#criar-site" class="button-hover p-4 bg-purple-500 text-white rounded-xl transition-transform whitespace-nowrap" aria-label="Criar um site, loja ou página personalizada">🌐 Criação de Sites e Lojas Virtuais</a></li>
-                <li><a href="#criar-app" class="button-hover p-4 bg-teal-500 text-white rounded-xl transition-transform" aria-label="Criar um aplicativo para o seu negócio">📱 Desenvolvimento de Aplicativos</a></li>
+            <ul class="space-y-4">
+                <li><a href="#manutencao" class="button-hover bg-blue-500 text-white rounded-xl block">💻 Manutenção e Reparo de PC</a></li>
+                <li><a href="#instalacao-app" class="button-hover bg-green-500 text-white rounded-xl block">📦 Instalação de Aplicativos</a></li>
+                <li><a href="#orcamento-pc" class="button-hover bg-yellow-500 text-white rounded-xl block">🖥️ Orçamento para PC de Escritório</a></li>
+                <li><a href="#orcamento-gamer" class="button-hover bg-red-500 text-white rounded-xl block">🎮 Orçamento para PC Gamer</a></li>
+                <li><a href="#efetuar-pagamento" class="button-hover bg-orange-500 text-white rounded-xl block">💳 Efetuar Pagamento</a></li>
+                <li><a href="#criar-site" class="button-hover bg-purple-500 text-white rounded-xl block">🌐 Criação de Sites e Lojas Virtuais</a></li>
+                <li><a href="#criar-app" class="button-hover bg-teal-500 text-white rounded-xl block">📱 Desenvolvimento de Aplicativos</a></li>
             </ul>
         </nav>
     </div>
