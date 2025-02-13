@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>🚀💻 ESPAÇO PC</title>
+    <title>🚀🖥️ ESPAÇO PC</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-        <!--icon-->
-    <link rel="icon" type="image/svg" sizes="16x16"  href="icone/foguete.svg">
+    <!-- Ícone -->
+    <link rel="icon" type="image/svg+xml" sizes="16x16" href="icone/foguete.svg">
     <style>
         body {
             background: radial-gradient(circle, #0b3d91, #000428);
             position: relative;
-            cursor: none;
             margin: 0;
             padding: 0;
             display: flex;
@@ -21,14 +20,14 @@
             align-items: center;
             justify-content: flex-start;
             min-height: 100vh;
-            overflow-y: auto;
+            overflow-x: hidden;
         }
 
         .custom-cursor {
             position: absolute;
             font-size: 2rem;
             pointer-events: none;
-            transition: transform 0.1s ease-in-out;
+            transition: transform 0.05s linear;
         }
 
         .button-hover {
@@ -36,9 +35,11 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 100%;
-            height: auto;
             padding: 15px;
+            transition: transform 0.2s ease-in-out;
+        }
+        .button-hover:hover {
+            transform: scale(1.05);
         }
 
         .star {
@@ -77,7 +78,7 @@
         }
     </style>
 </head>
-<body class="text-gray-900 flex flex-col items-center min-h-screen p-4 overflow-y-auto">
+<body>
     <script>
         const customCursor = document.createElement('div');
         customCursor.classList.add('custom-cursor');
@@ -85,8 +86,8 @@
         document.body.appendChild(customCursor);
 
         document.addEventListener('mousemove', (e) => {
-            customCursor.style.left = e.pageX + 'px';
-            customCursor.style.top = e.pageY + 'px';
+            customCursor.style.left = `${e.pageX}px`;
+            customCursor.style.top = `${e.pageY}px`;
         });
 
         function createStars() {
@@ -101,34 +102,24 @@
             }
         }
 
-        function createShootingStar() {
-            let shootingStar = document.createElement('div');
-            shootingStar.classList.add('shooting-star');
-            shootingStar.style.left = Math.random() * 100 + 'vw';
-            shootingStar.style.top = Math.random() * 50 + 'vh';
-            document.body.appendChild(shootingStar);
-            setTimeout(() => { shootingStar.remove(); }, 1000);
-        }
-
         createStars();
-        setInterval(createShootingStar, 1000);
     </script>
 
     <div class="w-full max-w-md p-6 bg-white rounded-2xl shadow-lg border border-gray-200">
         <header class="text-center mb-8">
-            <h1 class="text-3xl font-extrabold text-blue-600">🚀💻 ESPAÇO PC</h1>
+            <h1 class="text-3xl font-extrabold text-blue-600">🚀🖥️ ESPAÇO PC</h1>
             <p class="text-lg text-gray-600">Seu PC, sua solução! Escolha o serviço que você precisa e entre em contato.</p>
         </header>
-        <nav aria-label="Lista de serviços">
+        <nav>
             <ul class="space-y-4">
-                <li><a href="#manutencao" class="button-hover bg-blue-500 text-white rounded-xl block">💻 Manutenção e Reparo de PC</a></li>
+                <li><a href="#manutencao" class="button-hover bg-blue-500 text-white rounded-xl block">🖥️ Manutenção e Reparo de PC</a></li>
                 <li><a href="#instalacao-app" class="button-hover bg-green-500 text-white rounded-xl block">📦 Instalação de Aplicativos</a></li>
                 <li><a href="#orcamento-pc" class="button-hover bg-yellow-500 text-white rounded-xl block">🖥️ Orçamento para PC de Escritório</a></li>
                 <li><a href="#orcamento-gamer" class="button-hover bg-red-500 text-white rounded-xl block">🎮 Orçamento para PC Gamer</a></li>
                 <li><a href="#efetuar-pagamento" class="button-hover bg-orange-500 text-white rounded-xl block">💳 Efetuar Pagamento</a></li>
                 <li><a href="#criar-site" class="button-hover bg-purple-500 text-white rounded-xl block">🌐 Criação de Sites e Lojas Virtuais</a></li>
                 <li><a href="#criar-app" class="button-hover bg-teal-500 text-white rounded-xl block">📱 Desenvolvimento de Aplicativos Android</a></li>
-                <li><a href="https://wa.me/5591984608108" target="_blank" class="button-hover bg-teal-700 text-white rounded-xl block">💬 Falar no WhatsApp</a></li>
+                <li><a href="https://wa.me/5591984608108" target="_blank" class="button-hover bg-teal-700 text-white rounded-xl block">💌 Falar no WhatsApp</a></li>
             </ul>
         </nav>
     </div>
