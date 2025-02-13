@@ -9,9 +9,11 @@
     <style>
         body {
             background: radial-gradient(circle, #0b3d91, #000428);
-            overflow: scroll; /* Forçando a barra de rolagem lateral a ficar visível */
             position: relative;
             cursor: none; /* Removendo o cursor padrão */
+            overflow: hidden; /* Removendo qualquer barra de rolagem */
+            margin: 0;
+            padding: 0;
         }
 
         /* Estilo do cursor personalizado */
@@ -64,9 +66,9 @@
 
         /* Estilos para tornar o layout mais responsivo */
         .content {
-            max-width: 100%;
             width: 100%;
-            overflow: auto;
+            padding: 2rem; /* Reduzindo o padding para telas menores */
+            box-sizing: border-box;
         }
 
         nav ul {
@@ -78,32 +80,38 @@
 
         nav ul li {
             white-space: nowrap; /* Garante que o texto não quebre */
-            margin-bottom: 2rem; /* Aumentando o espaçamento entre os itens */
+            margin-bottom: 1.5rem; /* Ajustando o espaçamento entre os itens */
         }
 
         @media (max-width: 640px) {
+            /* Ajustando o tamanho do cursor no mobile */
             .custom-cursor {
-                font-size: 1.5rem; /* Ajuste o tamanho do emoji no mobile */
+                font-size: 1.5rem; /* Tamanho do emoji no mobile */
             }
 
-            .w-full {
-                width: 100%;
-            }
-
-            .max-w-md {
-                max-width: 100%; /* Tornando a largura máxima responsiva */
-            }
-
-            .p-6 {
-                padding: 1rem; /* Reduzindo o padding em telas pequenas */
-            }
-
-            .space-y-8 {
-                margin-top: 0.5rem; /* Ajustando a margem entre os itens */
+            /* Ajustando a largura do container e removendo excessos */
+            .content {
+                padding: 1.5rem;
             }
 
             nav ul li {
-                margin-bottom: 2rem; /* Aumentando o espaçamento entre os itens no mobile */
+                margin-bottom: 1rem; /* Ajustando espaçamento entre os itens */
+            }
+        }
+
+        /* Garantindo que o layout se ajuste ao tamanho da tela */
+        @media (max-width: 320px) {
+            /* Ajustando o título e outros elementos */
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            nav ul li {
+                font-size: 0.9rem; /* Menor tamanho de fonte para telas muito pequenas */
             }
         }
     </style>
