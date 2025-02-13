@@ -7,43 +7,115 @@
     <title>🚀💻 ESPAÇO PC</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        body {
+            background: radial-gradient(circle, #0b3d91, #000428);
+            overflow: hidden;
+            position: relative;
+            cursor: none; /* Removendo o cursor padrão */
+        }
+
+        /* Estilo do cursor personalizado */
+        .custom-cursor {
+            position: absolute;
+            font-size: 2rem; /* Ajuste o tamanho do emoji conforme necessário */
+            pointer-events: none; /* Impede que o cursor interaja com elementos */
+            transition: transform 0.1s ease-in-out;
+        }
+
+        .star {
+            position: absolute;
+            color: #fff;
+            font-size: 1rem;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .shooting-star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            box-shadow: 0 0 8px white;
+            border-radius: 50%;
+            opacity: 0;
+            transform: translateX(-50%) translateY(-50%);
+            animation: shooting 2s linear;
+        }
+
+        @keyframes shooting {
+            0% {
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(100vw) translateY(100vh);
+            }
+        }
+
         .button-hover:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-900 flex flex-col items-center justify-between min-h-screen p-4">
+<body class="text-gray-900 flex flex-col items-center justify-between min-h-screen p-4">
+    <script>
+        // Criando o cursor com o emoji de foguete
+        const customCursor = document.createElement('div');
+        customCursor.classList.add('custom-cursor');
+        customCursor.innerText = '🚀'; // Emoji de foguete
+        document.body.appendChild(customCursor);
 
-    <div class="w-full max-w-md p-6 bg-white rounded-2xl shadow-lg border border-gray-200 mb-6">
-        <header class="text-center mb-6">
+        // Movimentando o cursor personalizado com o movimento do mouse
+        document.addEventListener('mousemove', (e) => {
+            customCursor.style.left = e.pageX + 'px';
+            customCursor.style.top = e.pageY + 'px';
+        });
+
+        function createStars() {
+            for (let i = 0; i < 30; i++) {
+                let star = document.createElement('div');
+                star.innerHTML = '⭐';
+                star.classList.add('star');
+                star.style.left = Math.random() * 100 + 'vw';
+                star.style.top = Math.random() * 100 + 'vh';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                document.body.appendChild(star);
+            }
+        }
+
+        function createShootingStar() {
+            let shootingStar = document.createElement('div');
+            shootingStar.classList.add('shooting-star');
+            shootingStar.style.left = Math.random() * 100 + 'vw';
+            shootingStar.style.top = Math.random() * 50 + 'vh';
+            document.body.appendChild(shootingStar);
+            setTimeout(() => { shootingStar.remove(); }, 2000); // Remove após a animação
+        }
+
+        createStars();
+        setInterval(createShootingStar, 1000); // 1 estrela cadente por segundo
+    </script>
+
+    <div class="w-full max-w-md p-6 bg-white rounded-2xl shadow-lg border border-gray-200 mb-12">
+        <header class="text-center mb-8">
             <h1 class="text-3xl font-extrabold text-blue-600">🚀💻 ESPAÇO PC</h1>
             <p class="text-lg text-gray-600">Seu PC, sua solução! Escolha o serviço que você precisa e entre em contato.</p>
         </header>
-
         <nav aria-label="Lista de serviços">
             <ul class="space-y-10">
-                <li>
-                    <a href="#manutencao" class="button-hover p-4 bg-blue-500 text-white rounded-xl transition-transform" aria-label="Solicitar manutenção para o seu PC">💻 Manutenção e Reparo de PC</a>
-                </li>
-                <li>
-                    <a href="#instalacao-app" class="button-hover p-4 bg-green-500 text-white rounded-xl transition-transform" aria-label="Instalar aplicativos no seu PC">📦 Instalação de Aplicativos</a>
-                </li>
-                <li>
-                    <a href="#orcamento-pc" class="button-hover p-4 bg-yellow-500 text-white rounded-xl transition-transform" aria-label="Solicitar orçamento para PC de escritório">🖥️ Orçamento para PC de Escritório</a>
-                </li>
-                <li>
-                    <a href="#orcamento-gamer" class="button-hover p-4 bg-red-500 text-white rounded-xl transition-transform" aria-label="Solicitar orçamento para PC gamer">🎮 Orçamento para PC Gamer</a>
-                </li>
-                <li>
-                    <a href="#efetuar-pagamento" class="button-hover p-4 bg-orange-500 text-white rounded-xl transition-transform" aria-label="Efetuar pagamento pelos serviços">💳 Efetuar Pagamento</a>
-                </li>
-                <li>
-                    <a href="#criar-site" class="button-hover p-4 bg-purple-500 text-white rounded-xl transition-transform whitespace-nowrap" aria-label="Criar um site, loja ou página personalizada">🌐 Criação de Sites e Lojas Virtuais</a>
-                </li>
-                <li>
-                    <a href="#criar-app" class="button-hover p-4 bg-teal-500 text-white rounded-xl transition-transform" aria-label="Criar um aplicativo para o seu negócio">📱 Desenvolvimento de Aplicativos</a>
-                </li>
+                <li><a href="#manutencao" class="button-hover p-4 bg-blue-500 text-white rounded-xl transition-transform" aria-label="Solicitar manutenção para o seu PC">💻 Manutenção e Reparo de PC</a></li>
+                <li><a href="#instalacao-app" class="button-hover p-4 bg-green-500 text-white rounded-xl transition-transform" aria-label="Instalar aplicativos no seu PC">📦 Instalação de Aplicativos</a></li>
+                <li><a href="#orcamento-pc" class="button-hover p-4 bg-yellow-500 text-white rounded-xl transition-transform" aria-label="Solicitar orçamento para PC de escritório">🖥️ Orçamento para PC de Escritório</a></li>
+                <li><a href="#orcamento-gamer" class="button-hover p-4 bg-red-500 text-white rounded-xl transition-transform" aria-label="Solicitar orçamento para PC gamer">🎮 Orçamento para PC Gamer</a></li>
+                <li><a href="#efetuar-pagamento" class="button-hover p-4 bg-orange-500 text-white rounded-xl transition-transform" aria-label="Efetuar pagamento pelos serviços">💳 Efetuar Pagamento</a></li>
+                <li><a href="#criar-site" class="button-hover p-4 bg-purple-500 text-white rounded-xl transition-transform whitespace-nowrap" aria-label="Criar um site, loja ou página personalizada">🌐 Criação de Sites e Lojas Virtuais</a></li>
+                <li><a href="#criar-app" class="button-hover p-4 bg-teal-500 text-white rounded-xl transition-transform" aria-label="Criar um aplicativo para o seu negócio">📱 Desenvolvimento de Aplicativos</a></li>
             </ul>
         </nav>
     </div>
@@ -51,6 +123,5 @@
     <footer class="w-full text-center text-gray-600 py-4 mt-auto">
         <p>Desenvolvido por Natanael Carvalho</p>
     </footer>
-
 </body>
 </html>
