@@ -16,9 +16,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-y: auto;
         }
 
         .custom-cursor {
@@ -74,7 +74,7 @@
         }
     </style>
 </head>
-<body class="text-gray-900 flex flex-col items-center min-h-screen p-4">
+<body class="text-gray-900 flex flex-col items-center min-h-screen p-4 overflow-y-auto">
     <script>
         const customCursor = document.createElement('div');
         customCursor.classList.add('custom-cursor');
@@ -129,7 +129,7 @@
         </nav>
     </div>
 
-    <footer class="w-full text-center text-gray-600 py-4 mt-auto">
+    <footer class="w-full text-center text-gray-600 py-4 mt-8">
         <p>Desenvolvido por Natanael Carvalho</p>
     </footer>
 </body>
