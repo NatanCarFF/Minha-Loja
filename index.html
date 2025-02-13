@@ -9,7 +9,7 @@
     <style>
         body {
             background: radial-gradient(circle, #0b3d91, #000428);
-            overflow: hidden;
+            overflow-x: hidden; /* Impede o scroll horizontal */
             position: relative;
             cursor: none; /* Removendo o cursor padrão */
         }
@@ -61,6 +61,51 @@
             transform: scale(1.05);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
+
+        /* Estilos para tornar o layout mais responsivo */
+        .content {
+            max-width: 100%;
+            width: 100%;
+            overflow: auto;
+        }
+
+        nav ul {
+            padding-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            white-space: nowrap; /* Garante que o texto não quebre */
+            margin-bottom: 2rem; /* Aumentando o espaçamento entre os itens */
+        }
+
+        @media (max-width: 640px) {
+            .custom-cursor {
+                font-size: 1.5rem; /* Ajuste o tamanho do emoji no mobile */
+            }
+
+            .w-full {
+                width: 100%;
+            }
+
+            .max-w-md {
+                max-width: 100%; /* Tornando a largura máxima responsiva */
+            }
+
+            .p-6 {
+                padding: 1rem; /* Reduzindo o padding em telas pequenas */
+            }
+
+            .space-y-8 {
+                margin-top: 0.5rem; /* Ajustando a margem entre os itens */
+            }
+
+            nav ul li {
+                margin-bottom: 2rem; /* Aumentando o espaçamento entre os itens no mobile */
+            }
+        }
     </style>
 </head>
 <body class="text-gray-900 flex flex-col items-center justify-between min-h-screen p-4">
@@ -102,13 +147,13 @@
         setInterval(createShootingStar, 1000); // 1 estrela cadente por segundo
     </script>
 
-    <div class="w-full max-w-md p-6 bg-white rounded-2xl shadow-lg border border-gray-200 mb-12">
+    <div class="content w-full max-w-md p-6 bg-white rounded-2xl shadow-lg border border-gray-200 mb-12">
         <header class="text-center mb-8">
             <h1 class="text-3xl font-extrabold text-blue-600">🚀💻 ESPAÇO PC</h1>
             <p class="text-lg text-gray-600">Seu PC, sua solução! Escolha o serviço que você precisa e entre em contato.</p>
         </header>
         <nav aria-label="Lista de serviços">
-            <ul class="space-y-10">
+            <ul class="space-y-8">
                 <li><a href="#manutencao" class="button-hover p-4 bg-blue-500 text-white rounded-xl transition-transform" aria-label="Solicitar manutenção para o seu PC">💻 Manutenção e Reparo de PC</a></li>
                 <li><a href="#instalacao-app" class="button-hover p-4 bg-green-500 text-white rounded-xl transition-transform" aria-label="Instalar aplicativos no seu PC">📦 Instalação de Aplicativos</a></li>
                 <li><a href="#orcamento-pc" class="button-hover p-4 bg-yellow-500 text-white rounded-xl transition-transform" aria-label="Solicitar orçamento para PC de escritório">🖥️ Orçamento para PC de Escritório</a></li>
